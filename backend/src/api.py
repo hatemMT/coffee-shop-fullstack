@@ -1,7 +1,7 @@
 import json
 
-from auth.auth import requires_auth, AuthError
-from database.models import db_drop_and_create_all, setup_db, Drink
+from .auth.auth import requires_auth, AuthError
+from .database.models import db_drop_and_create_all, setup_db, Drink
 from flask import Flask, jsonify, abort
 from flask import request
 from flask_cors import CORS
