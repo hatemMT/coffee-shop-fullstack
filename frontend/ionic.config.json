@@ -1,5 +1,6 @@
 {
   "name": "udaspicelatte",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "app_id": ""
 }

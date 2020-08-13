@@ -21,62 +21,7 @@ export class DrinksService {
 
     url = environment.apiServerUrl;
 
-    public items: { [key: number]: Drink } = {
-        1: {
-            id: 1,
-            title: 'matcha shake',
-            recipe: [
-                {
-                    name: 'milk',
-                    color: 'grey',
-                    parts: 1
-                },
-                {
-                    name: 'matcha',
-                    color: 'green',
-                    parts: 3
-                },
-            ]
-        },
-        2: {
-            id: 2,
-            title: 'flatwhite',
-            recipe: [
-
-                {
-                    name: 'milk',
-                    color: 'grey',
-                    parts: 3
-                },
-                {
-                    name: 'coffee',
-                    color: 'brown',
-                    parts: 1
-                },
-            ]
-        },
-        3: {
-            id: 3,
-            title: 'cap',
-            recipe: [
-                {
-                    name: 'foam',
-                    color: 'white',
-                    parts: 1
-                },
-                {
-                    name: 'milk',
-                    color: 'grey',
-                    parts: 2
-                },
-                {
-                    name: 'coffee',
-                    color: 'brown',
-                    parts: 1
-                },
-            ]
-        }
-    };
+    public items: { [key: number]: Drink } = {};
 
 
     constructor(private auth: AuthService,
@@ -108,10 +53,7 @@ export class DrinksService {
 
     }
 
-    saveDrink(drink
-                  :
-                  Drink
-    ) {
+    saveDrink(drink: Drink) {
         if (drink.id >= 0) { // patch
             this.http.patch(this.url + '/drinks/' + drink.id, drink, this.getHeaders())
                 .subscribe((res: any) => {
@@ -130,10 +72,7 @@ export class DrinksService {
 
     }
 
-    deleteDrink(drink
-                    :
-                    Drink
-    ) {
+    deleteDrink(drink: Drink) {
         delete this.items[drink.id];
         this.http.delete(this.url + '/drinks/' + drink.id, this.getHeaders())
             .subscribe((res: any) => {
@@ -141,10 +80,9 @@ export class DrinksService {
             });
     }
 
-    drinksToItems(drinks
-                      :
-                      Array<Drink>
-    ) {
+    drinksToItems(drinks: Array<Drink>) {
+        console.log('drinksToItems !!!!!!!!!!!!!!');
+        console.log(drinks);
         for (const drink of drinks) {
             this.items[drink.id] = drink;
         }

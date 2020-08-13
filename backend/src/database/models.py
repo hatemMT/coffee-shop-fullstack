@@ -2,6 +2,11 @@ import os
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 import json
+import json
+import os
+
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, String, Integer
 
 database_filename = "database.db"
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -41,6 +46,7 @@ class Drink(db.Model):
     # the ingredients blob - this stores a lazy json blob
     # the required datatype is [{'color': string, 'name':string, 'parts':number}]
     recipe =  Column(String(180), nullable=False)
+
 
     '''
     short()
